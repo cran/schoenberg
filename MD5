@@ -1,7 +1,9 @@
-2ffa68e959df1803e4317eb72822e5e3 *DESCRIPTION
-c8ebca225224bb5e5d4eb1357b81018c *NAMESPACE
-78808bccd71860f5d9f7826e061cc1fe *R/schoenberg.R
-5f480c817e04b9dc4ee994d47a7ccfd7 *README.md
-ed2c6b98e6db58adbadd4190b06f3220 *man/print.schoenberg.Rd
-13a41912b72c42c47e85299b638500eb *man/rekey.Rd
-898c6dc6b43acca9df8dd2f32dbbbe8f *man/schoenberg.Rd
+9da6c87eb50c9802dde564c21e8eeb1b *DESCRIPTION
+2c0243080f697ddba9b801701da49f59 *NAMESPACE
+cfa3be74cd069f6713a5a91358c489fb *R/print.R
+3ede84b66d47e88a2a7b2920d261de42 *R/schoenberg.R
+e5b3709f22e1751474e5a129d816d630 *R/zzz.R
+57de629304779df2349df18183d72119 *README.md
+581c6c7fa00813be3704145840f433aa *man/print.Rd
+2d0fcff33e3e1640b5ded1a6a4357006 *man/rekey.Rd
+8d0204a1312eb88310babfe2ef2be2ee *man/schoenberg.Rd

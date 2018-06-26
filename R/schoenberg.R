@@ -5,6 +5,7 @@
 #' If supplying note names, use capital letters for the note names, use "#" to indicate sharps, and use "b" to indicate flats.
 #' @param tone0 \emph{Optional}: Name of the note to use as the lead tone of the matrix.
 #' @param accidentals \emph{Optional}: Character scalar that determines whether accidentals should be represented as sharps (\code{accidentals} = "sharps") or flats (\code{accidentals} = "flats"); default value is \code{NULL}.
+#' \code{accidentals} can also be set to "integers" when one wishes to obtain a 12-tone matrix of numeric indices rather than notes.
 #' When \code{accidentals} is \code{NULL}, matrices created from pre-specified vectors of notes will use the original set of accidentals, whereas
 #' random matrices and matrices created from vectors of numeric indices will default to sharp notation.
 #' @param seed \emph{Optional}: Seed value to use in generating random matrices. Set this to a numeric value when matrices need to be reproducible.
@@ -77,6 +78,10 @@ schoenberg <- function(prime0 = NULL, tone0 = NULL, accidentals = NULL, seed = N
                accidentals <- accidentals[1]
                warning("When 'accidentals' is not NULL, it must be a scalar - only the first value was used", call. = FALSE)
           }
+
+          if(!(accidentals %in% c("sharps", "flats", "integers")))
+               stop("When 'accidentals' is not NULL, it must be 'sharps', 'flats', or 'integers'")
+
      }
 
      set.seed(seed)
@@ -198,6 +203,7 @@ schoenberg <- function(prime0 = NULL, tone0 = NULL, accidentals = NULL, seed = N
 #' @param tone_mat Object of the class "schoenberg" produced by the \code{schoenberg()} function.
 #' @param tone0 \emph{Optional}: Name of the note to use as the lead tone of the matrix.
 #' @param accidentals \emph{Optional}: Character scalar that determines whether accidentals should be represented as sharps (\code{accidentals} = "sharps") or flats (\code{accidentals} = "flats"); default value is \code{NULL}.
+#' \code{accidentals} can also be set to "integers" when one wishes to obtain a 12-tone matrix of numeric indices rather than notes.
 #' When \code{accidentals} is \code{NULL}, matrices created from pre-specified vectors of notes will use the original set of accidentals, whereas
 #' random matrices and matrices created from vectors of numeric indices will default to sharp notation.
 #'
@@ -219,16 +225,4 @@ rekey <- function(tone_mat, tone0 = NULL, accidentals = NULL){
      if(!("schoenberg" %in% class(tone_mat) ))
           stop("'tone_mat' must be of class 'schoenberg'", call. = FALSE)
      schoenberg(prime0 = as.matrix(tone_mat)[1,], tone0 = tone0, accidentals = accidentals)
-}
-
-
-#' print method for objects of the "schoenberg" class.
-#'
-#' @param x Object to be printed.
-#' @param ... Further arguments passed to or from other methods.
-#'
-#' @return Printed results from objects of the "schoenberg" class.
-#' @export
-print.schoenberg <- function(x, ...){
-     print.data.frame(x)
 }
